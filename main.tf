@@ -47,8 +47,6 @@ module "autoscaling" {
   image_id            = data.aws_ami.app_ami.id
 }
 
-}
-
 
 module "blog-alb" {
   source  = "terraform-aws-modules/alb/aws"
