@@ -32,9 +32,9 @@ module "blog_vpc" {
 }
 
 
-module "autoscaling" {
+module "blog_autoscaling" {
   source  = "terraform-aws-modules/autoscaling/aws"
-  version = "6.5.3"
+  version = "6.5.2"
 
   name = "blog"
 
@@ -47,10 +47,9 @@ module "autoscaling" {
   image_id            = data.aws_ami.app_ami.id
 }
 
-
 module "blog_alb" {
   source  = "terraform-aws-modules/alb/aws"
-  version = "~> 8.0"
+  version = "~> 6.0"
 
   name = "blog-alb"
 
@@ -68,7 +67,6 @@ module "blog_alb" {
       target_type      = "instance"
     }
   ]
-
 
   http_tcp_listeners = [
     {
